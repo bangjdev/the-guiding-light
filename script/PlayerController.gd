@@ -8,6 +8,9 @@ var velocity = Vector2()
 var jumping = false
 
 onready var mirror_node = get_node("PlayerMirror")
+onready var animated_sprite = get_node("AnimatedSprite")
+
+
 
 
 # FUnction to get Keyboard inputs
@@ -30,10 +33,19 @@ func get_keyboard_input():
     if jump and is_on_floor():
         jumping = true
         velocity.y = jump_speed
-    if right:
+        animated_sprite.play("jump")
+        
+    elif right:
         velocity.x += run_speed
-    if left:
+        animated_sprite.play("run_right")
+        
+    elif left:
         velocity.x -= run_speed
+        animated_sprite.play("run_left")
+        
+    else:
+        animated_sprite.play("idle")
+        
 
     # Do mirror motion
     if mirror_right:

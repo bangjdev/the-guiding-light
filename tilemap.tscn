@@ -7,6 +7,9 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 format = 1
@@ -18,8 +21,8 @@ __meta__ = {
 [node name="Player1" parent="." instance=ExtResource( 2 )]
 
 [node name="SolarGenerator" parent="." instance=ExtResource( 3 )]
-position = Vector2( 293.952, 141.966 )
-rotation = 2.03781
+position = Vector2( 659.603, 123.129 )
+rotation = 1.7319
 
 [node name="RotatingMirror" parent="." instance=ExtResource( 4 )]
 position = Vector2( 861.814, 305.643 )
