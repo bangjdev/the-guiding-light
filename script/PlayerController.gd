@@ -7,6 +7,14 @@ export (int) var gravity = 2400
 var velocity = Vector2()
 var jumping = false
 
+var mouse_speed = 0
+
+# Function to get mouse speed input
+func _input(event):
+    if event is InputEventMouseMotion:
+        mouse_speed = Input.get_last_mouse_speed();
+        
+
 
 # FUnction to get Keyboard inputs
 func get_keyboard_input():
@@ -34,10 +42,14 @@ func get_keyboard_input():
 
 # Function to process motion
 func _physics_process(delta):
+    
+    # Do character motion
     get_keyboard_input()
     velocity.y += gravity * delta
     if jumping and is_on_floor():
         jumping = false
     velocity = move_and_slide(velocity, Vector2(0, -1))
+    
+    # Do Mirror motion
 
 
