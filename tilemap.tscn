@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://new_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SolarGenerator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://RotatingMirror.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,3 +16,11 @@ __meta__ = {
 }
 
 [node name="Player1" parent="." instance=ExtResource( 2 )]
+
+[node name="SolarGenerator" parent="." instance=ExtResource( 3 )]
+position = Vector2( 293.952, 141.966 )
+rotation = 2.03781
+
+[node name="RotatingMirror" parent="." instance=ExtResource( 4 )]
+position = Vector2( 861.814, 305.643 )
+power_source_reference = NodePath("../SolarGenerator")
