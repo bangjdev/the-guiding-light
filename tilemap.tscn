@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://new_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://script/PlayerController.gd" type="Script" id=3]
+[ext_resource path="res://script/MainScene.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Node2D" type="Node2D"]
 
@@ -11,3 +16,17 @@ tile_data = PoolIntArray( 327687, 0, 65537, 327688, 0, 2, 327689, 0, 2, 327691, 
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Player1" type="KinematicBody2D" parent="Node2D"]
+position = Vector2( 467, 51 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player1"]
+scale = Vector2( 3.5, 3.5 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Node2D/Player1"]
+texture = ExtResource( 2 )
