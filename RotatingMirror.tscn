@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/solar_power/rotating_mirror.png" type="Texture" id=2]
+[ext_resource path="res://assets/solar_power/motor.png" type="Texture" id=3]
+[ext_resource path="res://script/RotatingMirrorMotor.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="LineShape2D" id=2]
+
+[node name="RotatingMirror" type="KinematicBody2D"]
+z_index = -1
+collision_layer = 0
+script = ExtResource( 4 )
+
+[node name="MotorSprite" type="Sprite" parent="."]
+position = Vector2( 0, -80 )
+texture = ExtResource( 3 )
+
+[node name="MotorCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -120 )
+scale = Vector2( 3, 5 )
+shape = SubResource( 1 )
+
+[node name="Mirror" type="KinematicBody2D" parent="."]
+position = Vector2( 0, -146 )
+scale = Vector2( 1.2, 1 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="RotatingMirrorSprite" type="Sprite" parent="Mirror"]
+position = Vector2( 0, -20 )
+texture = ExtResource( 2 )
+
+[node name="RotatingMirrorCollisionShape" type="CollisionShape2D" parent="Mirror"]
+position = Vector2( 0, -33 )
+scale = Vector2( 0.78, 1 )
+shape = SubResource( 2 )

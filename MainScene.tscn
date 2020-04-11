@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/title_screen_temp.png" type="Texture" id=3]
 [ext_resource path="res://MainScene.gd" type="Script" id=4]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
@@ -21,4 +21,4 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 804, 384 )
 scale = Vector2( 64, 3.5 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
