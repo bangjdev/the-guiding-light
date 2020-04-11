@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://new_tileset.tres" type="TileSet" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 327687, 0, 65537, 327688, 0, 2, 327689, 0, 2, 327691, 0, 8, 327693, 0, 8, 327695, 0, 8, 327697, 0, 8, 393222, 0, 65537, 393223, 0, 131073, 458757, 0, 65537, 458758, 0, 131073, 524292, 0, 65537, 524293, 0, 131073, 589824, 0, 6, 589825, 0, 6, 589826, 0, 6, 589827, 0, 6, 589828, 0, 131073 )
+__meta__ = {
+"_edit_lock_": true
+}
