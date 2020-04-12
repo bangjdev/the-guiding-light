@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://script/LightBeam.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://script/ReflectiveObject.gd" type="Script" id=3]
+[ext_resource path="res://light_beam_test/rotator.gd" type="Script" id=4]
+[ext_resource path="res://light_beam_test/translator.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="LightBeam" parent="." instance=ExtResource( 1 )]
+position = Vector2( 221.931, 332.196 )
+
+[node name="Sprite" type="Sprite" parent="LightBeam"]
+texture = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 969.457, 203.094 )
+script = ExtResource( 4 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Node2D"]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/KinematicBody2D2"]
+scale = Vector2( 6, 6 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Node2D/KinematicBody2D2"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2( 1180.48, 333.201 )
+rotation = 0.414005
+script = ExtResource( 5 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Node2D2"]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/KinematicBody2D"]
+scale = Vector2( 6, 6 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Node2D2/KinematicBody2D"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
