@@ -17,7 +17,7 @@ func _process(delta):
 	var hit = false
 	for ray in get_children():
 		if ray.is_colliding():
-			print("Hit " + ray.get_collider().name)
+			print(ray.get_collider().name)
 			hit = true
 			
 

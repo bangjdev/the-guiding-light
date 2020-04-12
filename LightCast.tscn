@@ -11,15 +11,20 @@ scale = Vector2( 0.70193, 1 )
 enabled = false
 texture = ExtResource( 1 )
 offset = Vector2( 600, 0 )
+range_item_cull_mask = 7
 script = ExtResource( 2 )
 
 [node name="Ray_Left" type="RayCast2D" parent="Light"]
 position = Vector2( 0, -50 )
 cast_to = Vector2( 8000, 0 )
+collision_mask = 2
 
 [node name="Ray_Mid" type="RayCast2D" parent="Light"]
 cast_to = Vector2( 8000, 0 )
+collision_mask = 2
 
 [node name="Ray_Right" type="RayCast2D" parent="Light"]
 position = Vector2( 0, 50 )
 cast_to = Vector2( 8000, 0 )
+collision_mask = 2
+collide_with_areas = true

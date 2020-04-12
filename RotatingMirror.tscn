@@ -6,7 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[sub_resource type="LineShape2D" id=2]
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -97.7877, -0.27858 )
+b = Vector2( 98.2732, -1.07301 )
 
 [node name="RotatingMirror" type="KinematicBody2D"]
 z_index = -1
