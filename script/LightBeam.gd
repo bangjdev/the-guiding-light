@@ -1,6 +1,7 @@
 extends Node2D
 
 export (int) var natural_beam_length = 1000
+export (int) var max_number_of_reflections = 100
 
 onready var light_beam_line = get_node("LightBeamLine")
 onready var light_ray_cast = get_node("LightRayCast")
@@ -60,22 +61,25 @@ func update_child_light_beam(child_global_position: Vector2, source_direction: V
 
 func make_child_light_beam(collision_object_to_ignore):
     
-    var light_beam_scene = load("res://LightBeam.tscn")
-    var child_light_beam = light_beam_scene.instance()
+    # Do not exceed the maximum number of reflections!
+    if beam_number < max_number_of_reflections:
     
-    # Do this first for debugging
-    child_light_beam.beam_number = beam_number + 1
-    
-    # Doing this calls "_ready()"
-    self.add_child(child_light_beam)
-    
-    # Then we can do these things!
-    child_light_beam.set_name("LightBeam")
-    child_light_beam.add_collision_ignore(collision_object_to_ignore)
-    
-    
-    # Get reference
-    child_light_beam_ref = child_light_beam.get_path();
+        var light_beam_scene = load("res://LightBeam.tscn")
+        var child_light_beam = light_beam_scene.instance()
+        
+        # Do this first for debugging
+        child_light_beam.beam_number = beam_number + 1
+        
+        # Doing this calls "_ready()"
+        self.add_child(child_light_beam)
+        
+        # Then we can do these things!
+        child_light_beam.set_name("LightBeam")
+        child_light_beam.add_collision_ignore(collision_object_to_ignore)
+        
+        
+        # Get reference
+        child_light_beam_ref = child_light_beam.get_path();
     
     
 func destroy_child_light_beam():
