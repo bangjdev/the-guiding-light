@@ -1,14 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://script/SolarGenerator.gd" type="Script" id=1]
 [ext_resource path="res://assets/solar_power/solar_panel_generator.png" type="Texture" id=2]
-[ext_resource path="res://texture/texture.png" type="Texture" id=3]
-[ext_resource path="res://script/LightCast.gd" type="Script" id=4]
+[ext_resource path="res://assets/light_textures/CircularLight.png" type="Texture" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 41.9989, -53.8473, 39.7906, -48.8786, 38.1344, -44.462, 37.0302, -39.8613, 35.9261, -34.7086, 34.8219, -27.3476, 34.2698, -20.3546, 34.0858, 22.1554, 35.374, 31.7248, 36.2941, 37.0615, 37.2142, 41.8462, 39.9746, 47.1829, 41.2628, 49.9433, 42.551, 51.7836, 43.2871, 53.9919, 39.0545, 54.36, 35.374, 53.9919, 32.2455, 48.6552, 29.4852, 42.3983, 28.381, 38.1657, 27.4609, 32.2768, 26.7248, 23.0755, 26.3567, -23.115, 27.6449, -31.9482, 28.565, -39.3092, 30.4053, -44.0939, 33.3497, -50.3508, 35.19, -53.8473, 37.2142, -54.5834 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=2]
 
 [sub_resource type="CircleShape2D" id=3]
 
@@ -23,7 +22,7 @@ texture = ExtResource( 2 )
 occluder = SubResource( 1 )
 
 [node name="GeneratorCollisionShape" type="CollisionShape2D" parent="."]
-scale = Vector2( 5, 5.5 )
+scale = Vector2( 4, 5 )
 shape = SubResource( 2 )
 
 [node name="LightCollisionShape" type="CollisionShape2D" parent="."]
@@ -31,28 +30,6 @@ position = Vector2( 40, 0 )
 scale = Vector2( 1, 5 )
 shape = SubResource( 3 )
 
-[node name="Light" type="Light2D" parent="."]
-position = Vector2( -12.1925, -0.260681 )
-scale = Vector2( 0.70193, 1 )
+[node name="SelfLight" type="Light2D" parent="."]
+position = Vector2( 50.7182, -1.52588e-05 )
 texture = ExtResource( 3 )
-offset = Vector2( 600, 0 )
-range_item_cull_mask = 7
-script = ExtResource( 4 )
-
-[node name="Ray_Left" type="RayCast2D" parent="Light"]
-position = Vector2( 0, -50 )
-enabled = true
-cast_to = Vector2( 8000, 0 )
-collision_mask = 2
-
-[node name="Ray_Mid" type="RayCast2D" parent="Light"]
-enabled = true
-cast_to = Vector2( 8000, 0 )
-collision_mask = 2
-
-[node name="Ray_Right" type="RayCast2D" parent="Light"]
-position = Vector2( 0, 50 )
-enabled = true
-cast_to = Vector2( 8000, 0 )
-collision_mask = 2
-collide_with_areas = true

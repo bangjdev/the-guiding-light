@@ -12,8 +12,6 @@ var previous_light_acceptor_ref: NodePath
 # keeps track of which beam I am
 var beam_number: int = 0 
 
-
-
 func _ready():
     add_collision_ignore(self)
     #light_ray_cast.enabled = true
@@ -77,8 +75,7 @@ func make_child_light_beam(collision_object_to_ignore):
         child_light_beam.set_name("LightBeam")
         child_light_beam.add_collision_ignore(collision_object_to_ignore)
         
-        
-        # Get reference
+        # Get reference to the create beam
         child_light_beam_ref = child_light_beam.get_path();
     
     
@@ -95,6 +92,7 @@ func destroy_child_light_beam():
     
             # Destroy child of light beam
             child_light_beam.destroy_child_light_beam()
+            child_light_beam.unreference_light_acceptor_with_notify()
             
             # Remove child from self
             self.remove_child(child_light_beam)
@@ -103,6 +101,21 @@ func destroy_child_light_beam():
             child_light_beam.queue_free()
             
             child_light_beam_ref = NodePath("")
+
+
+func unreference_light_acceptor_with_notify():
+    
+    if not previous_light_acceptor_ref.is_empty():
+        
+        var previous_light_acceptor = get_node(previous_light_acceptor_ref)
+        
+        if is_instance_valid(previous_light_acceptor):
+            
+            # tell the light acceptor it isn't being hit with light anymore
+            previous_light_acceptor.notify_light_acceptor_unhit()
+            
+            # Unset the reference
+            previous_light_acceptor_ref = ""
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -143,8 +156,34 @@ func _physics_process(_delta):
             # destroy child if not mirror
             destroy_child_light_beam()
             
+            
+            
+        # If we hit something like a SolarGenerator or LightCollector
         if is_light_acceptor(collision_object):
-            pass
+            
+            # Notify object it was hit
+            collision_object.notify_light_acceptor_hit()
+            
+            # Set reference to light acceptor
+            if previous_light_acceptor_ref != collision_object.get_path():
+                # if not hitting the SAME light acceptor
+                
+                # unref the old one
+                unreference_light_acceptor_with_notify()
+                
+                # reference the new one
+                previous_light_acceptor_ref = collision_object.get_path()
+            
+            else:
+                # if we weren't hitting a light acceptor
+                previous_light_acceptor_ref = collision_object.get_path()
+                
+            
+        else:
+            
+            # if not a light object, and valid reference
+            unreference_light_acceptor_with_notify()
+        
         
     else:
         # Propagate to 1000
@@ -152,10 +191,12 @@ func _physics_process(_delta):
         
         # destroy child, if any
         destroy_child_light_beam()
+        
+        # unreference light acceptor, if any
+        unreference_light_acceptor_with_notify()
             
     # Draw the light beam
     # Right now I just have a line, but we can add whatever we want!
-    #var global_end_position = transform.x * light_beam_length
     var local_end_position = Vector2.RIGHT * light_beam_length
     light_beam_line.set_point_position(0, Vector2.ZERO)
     light_beam_line.set_point_position(1, local_end_position)

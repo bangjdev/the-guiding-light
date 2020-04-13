@@ -17,4 +17,4 @@ func _ready():
 
 func _physics_process(delta):
     
-    self.rotate(delta * 0.1)
+    self.rotate(delta * 0.2)

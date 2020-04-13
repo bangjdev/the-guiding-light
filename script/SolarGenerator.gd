@@ -3,29 +3,29 @@ extends KinematicBody2D
 
 
 # Light to turn on if the generator has power
-onready var self_light = get_node("Light")
+onready var self_light = get_node("SelfLight")
 
 # Variable that dictates if the generator has power
 var has_power = false
 
 
+func notify_light_acceptor_hit():
+    has_power = true
+    
+func notify_light_acceptor_unhit():
+    has_power = false
+
 
 # Allow children to see if the generator has power
 func is_powered() -> bool:
-	return has_power
+    return has_power
 
-
-func _ready():
-	pass
-	
 
 # Do kinematics
-# (Actually, just check if there is any light shining on it
+# (Actually, just check if there is any light shining on it)
 func _physics_process(delta):
-	if Input.is_action_just_pressed("debug_key"):
-		has_power = not has_power
-		if has_power:
-			self_light.turn_on()
-		else:
-			self_light.turn_off()
-		
+    
+    if has_power:
+        self_light.enabled = true
+    else:
+        self_light.enabled = false
