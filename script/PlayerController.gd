@@ -6,10 +6,10 @@ export (int) var gravity = 2400
 
 var velocity = Vector2()
 var jumping = false
+var need_flip = false
 
 onready var mirror_node = get_node("PlayerMirror")
 onready var animated_sprite = get_node("AnimatedSprite")
-
 
 
 
@@ -24,29 +24,37 @@ func get_keyboard_input():
 	
 	var mirror_right = Input.is_action_pressed("p1_mirror_right")
 	var mirror_left = Input.is_action_pressed("p1_mirror_left")
+
+	# Check direction
+	if left:
+		need_flip = true
+	
+	if right:
+		need_flip = false
+	
+	$AnimatedSprite.flip_h = need_flip
 	
 	# Quit game
 	if Input.is_action_pressed('ui_cancel'):
 		get_tree().quit()
-
+	
 	# Move and Jump
 	if jump and is_on_floor():
 		jumping = true
 		velocity.y = jump_speed
 		animated_sprite.play("jump")
-		
+	
 	elif right:
 		velocity.x += run_speed
-		animated_sprite.play("run_right")
-		
+		animated_sprite.play("run")
+	
 	elif left:
 		velocity.x -= run_speed
-		animated_sprite.play("run_left")
+		animated_sprite.play("run")
 		
-	else:
+	elif is_on_floor():
 		animated_sprite.play("idle")
-		
-
+	
 	# Do mirror motion
 	if mirror_right:
 		mirror_node.set_rotation_direction(1)
@@ -54,6 +62,7 @@ func get_keyboard_input():
 		mirror_node.set_rotation_direction(-1)
 	else:
 		mirror_node.set_rotation_direction(0)
+
 
 
 # Function to process motion
