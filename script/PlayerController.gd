@@ -53,7 +53,7 @@ func get_keyboard_input():
 		velocity.x -= run_speed
 		animated_sprite.play("run")
 		
-	else:
+	elif is_on_floor():
 		animated_sprite.play("idle")
 	
 	
