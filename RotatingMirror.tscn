@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://script/ReflectiveObject.gd" type="Script" id=1]
 [ext_resource path="res://assets/solar_power/rotating_mirror.png" type="Texture" id=2]
 [ext_resource path="res://assets/solar_power/motor.png" type="Texture" id=3]
 [ext_resource path="res://script/RotatingMirrorMotor.gd" type="Script" id=4]
@@ -38,3 +39,4 @@ texture = ExtResource( 2 )
 position = Vector2( 0, -33 )
 scale = Vector2( 0.78, 1 )
 shape = SubResource( 2 )
+script = ExtResource( 1 )

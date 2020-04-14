@@ -194,7 +194,7 @@ func _physics_process(_delta):
         
         # unreference light acceptor, if any
         unreference_light_acceptor_with_notify()
-            
+
     # Draw the light beam
     # Right now I just have a line, but we can add whatever we want!
     var local_end_position = Vector2.RIGHT * light_beam_length
