@@ -1,7 +1,7 @@
 extends Node2D
 
-export (int) var natural_beam_length = 1000
-export (int) var max_number_of_reflections = 100
+export (int) var natural_beam_length = 4000
+export (int) var max_number_of_reflections = 30
 
 onready var light_beam_line = get_node("LightBeamLine")
 onready var light_ray_cast = get_node("LightRayCast")
@@ -14,9 +14,6 @@ var beam_number: int = 0
 
 func _ready():
     add_collision_ignore(self)
-    #light_ray_cast.enabled = true
-    #light_ray_cast.set_collide_with_bodies(true)
-    
     
     
 func add_collision_ignore(object_to_ignore):
@@ -25,6 +22,17 @@ func add_collision_ignore(object_to_ignore):
         print(object_to_ignore.get_name())
     light_ray_cast.add_exception_rid(object_to_ignore)
     
+
+func disable_light_beam():
+    light_ray_cast.enabled = false
+    light_beam_line.visible = false
+    unreference_light_acceptor_with_notify()
+    destroy_child_light_beam()
+    
+    
+func enable_light_beam():
+    light_ray_cast.enabled = true
+    light_beam_line.visible = true
 
 
 func is_reflective(obj: Object) -> bool:
@@ -128,18 +136,10 @@ func _physics_process(_delta):
     light_ray_cast.force_raycast_update()
     
     var collision_object = light_ray_cast.get_collider()
-    
-    if beam_number > 0 and collision_object != null:
-        print(collision_object.get_name())
-    
-    #var collision = space_state.intersect_ray(self.global_position, transform.x)
-
-    #print(collision_object)
 
     if collision_object:
         
         # we now know where the light beam ends
-        #var global_end_position = collision["position"]
         var collision_position = light_ray_cast.get_collision_point()
         var light_path_vector = collision_position - self.global_position
         light_beam_length = light_path_vector.length()

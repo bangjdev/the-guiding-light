@@ -23,7 +23,7 @@ func is_powered() -> bool:
 
 # Do kinematics
 # (Actually, just check if there is any light shining on it)
-func _physics_process(delta):
+func _physics_process(_delta):
     
     if has_power:
         self_light.enabled = true
