@@ -17,6 +17,6 @@ onready var power_source = get_node(power_source_reference)
 
 # Do kinematics
 func _physics_process(delta):
-    
-    if power_source.is_powered():
-        rotating_mirror.rotate(rotation_speed * delta)
+	
+	if power_source.is_powered():
+		rotating_mirror.rotate(rotation_speed * delta)

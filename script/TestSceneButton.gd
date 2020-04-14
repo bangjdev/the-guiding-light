@@ -12,8 +12,8 @@ func _ready():
 	
 	
 func _pressed():
-	get_tree().change_scene("res://test_scene.tscn")
-	print("Clicked start")
+	get_tree().change_scene("res://light_beam_test/LightBeamTest.tscn")
+	print("Clicked test scene")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

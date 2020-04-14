@@ -13,7 +13,6 @@ onready var animated_sprite = get_node("AnimatedSprite")
 
 
 
-
 # FUnction to get Keyboard inputs
 func get_keyboard_input():
 	
@@ -25,7 +24,7 @@ func get_keyboard_input():
 	
 	var mirror_right = Input.is_action_pressed("p1_mirror_right")
 	var mirror_left = Input.is_action_pressed("p1_mirror_left")
-	
+
 	# Check direction
 	if left:
 		need_flip = true
@@ -56,7 +55,6 @@ func get_keyboard_input():
 	elif is_on_floor():
 		animated_sprite.play("idle")
 	
-	
 	# Do mirror motion
 	if mirror_right:
 		mirror_node.set_rotation_direction(1)
@@ -64,6 +62,7 @@ func get_keyboard_input():
 		mirror_node.set_rotation_direction(-1)
 	else:
 		mirror_node.set_rotation_direction(0)
+
 
 
 # Function to process motion
