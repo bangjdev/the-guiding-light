@@ -49,6 +49,8 @@ extents = Vector2( 44.2533, 3.44456 )
 
 [node name="Player1" type="KinematicBody2D"]
 script = ExtResource( 4 )
+run_speed = 300
+jump_speed = -700
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -8.47033e-22, 5.82356 )
@@ -65,6 +67,7 @@ animation = "idle"
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 3 )
+rotation_speed = 1
 
 [node name="Sprite" type="Sprite" parent="PlayerMirror"]
 position = Vector2( -3.55271e-15, -43 )
@@ -89,3 +92,8 @@ shape = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
