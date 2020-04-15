@@ -46,11 +46,13 @@ func get_keyboard_input():
 	
 	elif right:
 		velocity.x += run_speed
-		animated_sprite.play("run")
+		if not jumping:
+			animated_sprite.play("run")
 	
 	elif left:
 		velocity.x -= run_speed
-		animated_sprite.play("run")
+		if not jumping:
+			animated_sprite.play("run")
 		
 	elif is_on_floor():
 		animated_sprite.play("idle")
@@ -72,10 +74,10 @@ func _physics_process(delta):
 	get_keyboard_input()
 	
 	# Do character motion
-	velocity.y += gravity * delta
+	velocity.y += gravity * delta	
+	velocity = move_and_slide(velocity, Vector2(0, -1))
 	if jumping and is_on_floor():
 		jumping = false
-	velocity = move_and_slide(velocity, Vector2(0, -1))
 	
 	
 	# Mirror rotation is handled in PlayerMirror's own script
