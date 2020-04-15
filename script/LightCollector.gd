@@ -9,7 +9,6 @@ var has_power: bool = false
 
 func _ready():
 	child_light_beam.add_collision_ignore(self)
-	child_light_beam.disable_light_beam()
 	self_light.enabled = false
 
 

@@ -22,9 +22,6 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="LightBeam" parent="." instance=ExtResource( 3 )]
-natural_beam_length = 5000
-
 [node name="SelfLight" type="Light2D" parent="."]
 enabled = false
 texture = ExtResource( 4 )
@@ -32,3 +29,5 @@ texture_scale = 0.3
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource( 2 )
+
+[node name="LightBeam" parent="." instance=ExtResource( 3 )]
