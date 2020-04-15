@@ -15,6 +15,19 @@ func i_am_reflective() -> bool:
 func set_rotation_direction(rotation_dir):
 	rotation_direction = rotation_dir
 
+func show_mirror():
+	visible = true
+	get_node("ReflectiveCollision").disabled = false
+	get_node("KinematicBody2D/LightOccluder2D").visible = true
+	get_node("KinematicBody2D/CollisionShape2D").disabled = false
+
+
+func hide_mirror():
+	visible = false
+	get_node("ReflectiveCollision").disabled = true
+	get_node("KinematicBody2D/LightOccluder2D").visible = false
+	get_node("KinematicBody2D/CollisionShape2D").disabled = true
+
 
 # Function to process motion
 func _physics_process(delta):
