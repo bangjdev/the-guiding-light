@@ -1,7 +1,7 @@
 extends Node2D
 
-export (int) var natural_beam_length = 4000
-export (int) var max_number_of_reflections = 30
+export (int) var natural_beam_length = 20000
+export (int) var max_number_of_reflections = 200
 
 #onready var light_beam_line = get_node("LightBeamLine")
 onready var light_ray_cast = get_node("LightRayCast")
