@@ -9,6 +9,8 @@ export (float) var starting_angle = 0
 # Game object that powers the motor
 export (NodePath) var power_source_reference
 
+export (bool) var clockwise_rotation = true;
+
 # Child object to rotate
 onready var rotating_mirror = get_node("Mirror")
 
@@ -22,4 +24,7 @@ func _ready():
 func _physics_process(delta):
 	
 	if power_source.is_powered():
-		rotating_mirror.rotate(rotation_speed * delta)
+		if clockwise_rotation:
+			rotating_mirror.rotate(rotation_speed * delta)
+		else:
+			rotating_mirror.rotate(rotation_speed * delta * -1)
