@@ -43,7 +43,7 @@ rotation = 1.5708
 z_index = -1
 
 [node name="RoMir3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1184.53, -226.356 )
+position = Vector2( 1135.84, -227.788 )
 rotation = 3.14159
 power_source_reference = NodePath("../SoGen3")
 
