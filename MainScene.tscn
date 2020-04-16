@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/Level0.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/Level1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://MainScene.gd" type="Script" id=4]
 [ext_resource path="res://levels/level2.tscn" type="PackedScene" id=5]
-
+[ext_resource path="res://levels/level3.tscn" type="PackedScene" id=6]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 4 )
@@ -30,5 +30,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" parent="." instance=ExtResource( 5 )]
+[node name="Level2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1658.46, 377.311 )
+
+[node name="level3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 3309.7, 256.115 )
