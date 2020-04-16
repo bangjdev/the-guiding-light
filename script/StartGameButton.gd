@@ -12,7 +12,7 @@ func _ready():
 	
 	
 func _pressed():
-	get_tree().change_scene("res://tilemap.tscn")
+	get_tree().change_scene("res://MainScene.tscn")
 	print("Clicked start")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
