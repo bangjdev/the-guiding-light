@@ -11,14 +11,6 @@
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="Player1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 112.643, 692.647 )
-
-[node name="Level0" parent="." instance=ExtResource( 2 )]
-
-[node name="Level1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 834.132, 381.868 )
-
 [node name="Instruction" type="RichTextLabel" parent="."]
 margin_left = 12.9642
 margin_top = 659.496
@@ -31,8 +23,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Player1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 112.643, 692.647 )
+
+[node name="Level0" parent="." instance=ExtResource( 2 )]
+
+[node name="Level1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 832, 381.868 )
+
 [node name="Level2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1658.46, 377.311 )
+position = Vector2( 1664, 381.868 )
 
 [node name="level3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3309.7, 256.115 )
@@ -42,3 +42,4 @@ position = Vector2( 4909.5, -382.267 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.14902, 0.133333, 0.133333, 1 )
+position = Vector2( 4904.34, -384 )
