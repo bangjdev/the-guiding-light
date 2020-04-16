@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://new_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://LightCollector.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player1.tscn" type="PackedScene" id=3]
-[ext_resource path="res://LightBeam.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
@@ -20,9 +18,3 @@ tile_data = PoolIntArray( 65535, 0, 65536, 0, 0, 65536, 1, 0, 65536, 2, 0, 65536
 
 [node name="LightCollector" parent="." instance=ExtResource( 2 )]
 position = Vector2( 606.206, 150.484 )
-
-[node name="LightBeam" parent="." instance=ExtResource( 4 )]
-position = Vector2( -34.7256, 411.225 )
-
-[node name="Player1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 169.973, 232.114 )
