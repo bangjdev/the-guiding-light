@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/Level0.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/Level1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://MainScene.gd" type="Script" id=4]
+[ext_resource path="res://level2.tscn" type="PackedScene" id=5]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 4 )
@@ -14,7 +15,7 @@ position = Vector2( 112.643, 692.647 )
 [node name="Level0" parent="." instance=ExtResource( 2 )]
 
 [node name="Level1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 832, 384 )
+position = Vector2( 834.132, 381.868 )
 
 [node name="Instruction" type="RichTextLabel" parent="."]
 margin_left = 12.9642
@@ -27,3 +28,6 @@ Right click to use the mirror shield"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1658.46, 377.311 )
