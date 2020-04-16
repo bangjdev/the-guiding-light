@@ -13,9 +13,9 @@
 script = ExtResource( 4 )
 
 [node name="Instruction" type="RichTextLabel" parent="."]
-margin_left = 12.9642
+margin_left = 136.0
 margin_top = 659.496
-margin_right = 425.964
+margin_right = 549.0
 margin_bottom = 699.496
 rect_scale = Vector2( 2.4, 2.48 )
 text = "Use W, A, S, D to move
@@ -43,10 +43,20 @@ position = Vector2( 4909.5, -382.267 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2( 4904.34, -384 )
-color = Color( 0.17, 0.137417, 0.0918, 1 )
+color = Color( 0.427451, 0.415686, 0.403922, 1 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
 max_distance = 20000.0
 attenuation = 0.008088
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 624.0
+margin_top = 827.263
+margin_right = 777.0
+margin_bottom = 891.263
+text = "You will need to light up this yellow diamond"
+__meta__ = {
+"_edit_use_anchors_": false
+}
