@@ -9,7 +9,7 @@
 extents = Vector2( 22.2598, 23.0064 )
 
 [sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( -22.0491, -22.4408, -22.0491, 23.6319, -22.0491, 23.6319 )
+polygon = PoolVector2Array( -1.85771, -21.3023, -23.757, 0.596992, -1.85771, 21.9123 )
 
 [node name="LightCollector" type="KinematicBody2D"]
 collision_layer = 2
