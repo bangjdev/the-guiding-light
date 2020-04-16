@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://script/ReflectiveObject.gd" type="Script" id=1]
 [ext_resource path="res://assets/solar_power/rotating_mirror.png" type="Texture" id=2]
@@ -9,10 +9,13 @@
 
 [sub_resource type="SegmentShape2D" id=2]
 a = Vector2( -82.1962, 0.655762 )
-b = Vector2( 74.4824, -0.740921 )
+b = Vector2( 80.6854, -0.405457 )
 
 [sub_resource type="OccluderPolygon2D" id=3]
 polygon = PoolVector2Array( -102.774, -189.518, -87.4107, -161.584, -76.9356, -153.902, -64.3655, -147.617, -47.6054, -141.332, -20.3702, -137.142, 22.2285, -136.444, 51.5587, -142.729, 76.0006, -151.109, 96.9507, -167.171, 102.537, -193.009, 73.9056, -167.869, 32.0052, -163.679, -31.5436, -163.679, -73.4439, -167.869 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 74.6424, 4.76633 )
 
 [node name="RotatingMirror" type="KinematicBody2D"]
 z_index = -1
@@ -49,3 +52,11 @@ shape = SubResource( 2 )
 position = Vector2( 0, 146 )
 scale = Vector2( 0.833333, 1 )
 occluder = SubResource( 3 )
+
+[node name="Back" type="KinematicBody2D" parent="Mirror"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirror/Back"]
+position = Vector2( 0, -25.3162 )
+shape = SubResource( 4 )
