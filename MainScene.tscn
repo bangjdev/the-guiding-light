@@ -1,24 +1,34 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player1.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/title_screen_temp.png" type="Texture" id=3]
+[ext_resource path="res://levels/Level0.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/Level1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://MainScene.gd" type="Script" id=4]
+[ext_resource path="res://levels/level2.tscn" type="PackedScene" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
 
-[node name="Node2D" type="Node2D"]
+[node name="MainScene" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 112.643, 692.647 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Level0" parent="." instance=ExtResource( 2 )]
 
-[node name="Ground" type="Sprite" parent="StaticBody2D"]
-position = Vector2( 804, 384 )
-scale = Vector2( 1, 0.1 )
-texture = ExtResource( 3 )
+[node name="Level1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 834.132, 381.868 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 804, 384 )
-scale = Vector2( 64, 3.5 )
-shape = SubResource( 1 )
+[node name="Instruction" type="RichTextLabel" parent="."]
+margin_left = 12.9642
+margin_top = 659.496
+margin_right = 425.964
+margin_bottom = 699.496
+rect_scale = Vector2( 2.4, 2.48 )
+text = "Use W, A, S, D to move
+Right click to use the mirror shield"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1658.46, 377.311 )

@@ -7,11 +7,10 @@ export (int) var gravity = 2400
 var velocity = Vector2()
 var jumping = false
 var need_flip = false
+var using_mirror = false
 
 onready var mirror_node = get_node("PlayerMirror")
 onready var animated_sprite = get_node("AnimatedSprite")
-
-
 
 # FUnction to get Keyboard inputs
 func get_keyboard_input():
@@ -21,9 +20,7 @@ func get_keyboard_input():
 	var right = Input.is_action_pressed('p1_right')
 	var left = Input.is_action_pressed('p1_left')
 	var jump = Input.is_action_just_pressed('p1_jump')
-	
-	var mirror_right = Input.is_action_pressed("p1_mirror_right")
-	var mirror_left = Input.is_action_pressed("p1_mirror_left")
+	using_mirror = Input.is_action_pressed("use_mirror")
 
 	# Check direction
 	if left:
@@ -56,14 +53,7 @@ func get_keyboard_input():
 		
 	elif is_on_floor():
 		animated_sprite.play("idle")
-	
-	# Do mirror motion
-	if mirror_right:
-		mirror_node.set_rotation_direction(1)
-	elif mirror_left:
-		mirror_node.set_rotation_direction(-1)
-	else:
-		mirror_node.set_rotation_direction(0)
+
 
 
 
@@ -74,11 +64,16 @@ func _physics_process(delta):
 	get_keyboard_input()
 	
 	# Do character motion
-	velocity.y += gravity * delta	
+	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	if jumping and is_on_floor():
 		jumping = false
 	
+	if using_mirror:
+		mirror_node.show_mirror()
+		mirror_node.rotation = get_local_mouse_position().angle() + deg2rad(90)
+	else:
+		mirror_node.hide_mirror()
 	
 	# Mirror rotation is handled in PlayerMirror's own script
 

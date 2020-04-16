@@ -5,6 +5,7 @@ export (int) var max_number_of_reflections = 30
 
 #onready var light_beam_line = get_node("LightBeamLine")
 onready var light_ray_cast = get_node("LightRayCast")
+onready var light = get_node("Light")
 
 var child_light_beam_ref: NodePath
 var previous_light_acceptor_ref: NodePath
@@ -25,6 +26,7 @@ func add_collision_ignore(object_to_ignore):
 
 func disable_light_beam():
 	light_ray_cast.enabled = false
+	light.enabled = false
 #	light_beam_line.visible = false
 	unreference_light_acceptor_with_notify()
 	destroy_child_light_beam()
@@ -32,6 +34,7 @@ func disable_light_beam():
 	
 func enable_light_beam():
 	light_ray_cast.enabled = true
+	light.enabled = true
 #	light_beam_line.visible = true
 
 
@@ -128,7 +131,8 @@ func unreference_light_acceptor_with_notify():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
-
+	if not light_ray_cast.enabled:
+		return
 	# we are trying to solve for the length of the light beam
 	var light_beam_length = 0 # assume zero at start
 
